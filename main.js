@@ -84,11 +84,13 @@ function gameStart(){
 
     setTimeout(()=>{
         start.addEventListener('click', gameStart);
+        numBoard.addEventListener('click', numHandel)
         statusCheck(); 
         start.innerText = 'Start'
     },3000)
 
     start.removeEventListener('click', gameStart);
+    numBoard.removeEventListener('click', numHandel);
     start.innerText = 'Wait...'
 
     winnerBoard.innerText = '...'
@@ -97,7 +99,7 @@ function gameStart(){
     tryingNo ++;
     tryNo.innerText = tryingNo;
 
-    if(tryingNo % 5 === 0){
+    if(tryingNo % 3 === 0){
         let luckyNo = Math.floor(Math.random() * 6);
         // for(let box of boxs) {
         //     box.innerText = gameData[luckyNo];
@@ -123,26 +125,39 @@ function gameStart(){
         // console.log(boxDataNo)
     }
 
-
-    for(let boxIndex in boxs) {
+    for(let i = 0; i < 3; i++){
         setTimeout(()=>{
-            boxs[boxIndex].innerText = gameData[boxDataNo[boxIndex]];
-            clearInterval(changeAnimeStopIds[boxIndex]);
-        },1000 + (boxIndex  * 1000))
+            boxs[i].innerText = gameData[boxDataNo[i]];
+            // console.log(changeAnimeStopIds[boxIndex])
+            clearInterval(changeAnimeStopIds[i]);
+        },1000 + (i  * 1000))
     }
+
+
+    // for(let boxIndex in boxs) {
+    //     setTimeout(()=>{
+    //         boxs[boxIndex].innerText = gameData[boxDataNo[boxIndex]];
+    //         // console.log(changeAnimeStopIds[boxIndex])
+    //         clearInterval(changeAnimeStopIds[boxIndex]);
+    //     },1000 + (boxIndex  * 1000))
+    // }
 
 
     //for animetion in board containts
     changeAnimeStopIds = [];
+
     for(let i = 0; i < 3; i++){
         let intervalId = setInterval(()=>{
             let no = Math.floor(Math.random() * 6);
             boxs[i].innerText = gameData[no];
-        },100)
+        },200)
 
         
         changeAnimeStopIds.push(intervalId);
+
+        // console.log(intervalId)
     }
+    console.log(changeAnimeStopIds)
  
 }
 
@@ -151,9 +166,7 @@ start.addEventListener('click', gameStart);
 //------------------------------------------------------------------------
 //------------------------------------------------------------------------
 
-
-//bat setting through number board
-numBoard.addEventListener('click', (e)=>{
+let numHandel = (e)=>{
     let targetValue = e.target.innerText
 
     //backpace
@@ -172,6 +185,10 @@ numBoard.addEventListener('click', (e)=>{
 
     //updating you bat
     if(Number(bat.innerText) <= 999){
+        if(!Number(targetValue)){
+            return;
+        }
+
         if(targetValue == 'X..'){
             return;
         }
@@ -184,6 +201,9 @@ numBoard.addEventListener('click', (e)=>{
             bat.innerText = '999';
         }
     }
-})
+}
+
+//bat setting through number board
+numBoard.addEventListener('click', numHandel)
 
 
