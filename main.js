@@ -150,7 +150,7 @@ function gameStart(){
         let intervalId = setInterval(()=>{
             let no = Math.floor(Math.random() * 6);
             boxs[i].innerText = gameData[no];
-        },200)
+        },50)
 
         
         changeAnimeStopIds.push(intervalId);
