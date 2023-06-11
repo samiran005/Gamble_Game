@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gambling</title>
+
+    <!-- links -->
+    <link rel="stylesheet" href="style.css">
+    <script src="./main.js" defer></script>
+</head>
+<body>
+    
+    <div class="game--container">
+        <div class="game--board">
+            <div class="container">
+                <div class="box">A</div>
+                <div class="box">A</div>
+                <div class="box">A</div>
+            </div>
+
+            <div id="winnerBoard">...</div>
+            
+            <button id="start">Start</button>
+        </div>
+        <div class="dashboard">
+            <div class="score--board">Total Money $: <span id="score">0</span></div>
+            <div class="Try--Turn">Try: <span id="try">0</span></div>
+
+            <div class="bating--board">
+                <div class="bat--num">How Much $: <span id="bat">0</span></div>
+                <div class="num--board" id="numBoard">
+                    <div class="num">1</div>
+                    <div class="num">2</div>
+                    <div class="num">3</div>
+                    <div class="num">4</div>
+                    <div class="num">5</div>
+                    <div class="num">6</div>
+                    <div class="num">7</div>
+                    <div class="num">8</div>
+                    <div class="num">9</div>
+                    <div class="num zero">0</div>
+                    <div class="num">X..</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="warning display" id="warning">You need to Bat Money</div>
+</body>
+</html>
