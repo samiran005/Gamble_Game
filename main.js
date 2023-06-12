@@ -185,16 +185,21 @@ let numHandel = (e)=>{
 
     //updating you bat
     if(Number(bat.innerText) <= 999){
-        if(!Number(targetValue)){
+        if(Number(targetValue) == 0){ //for bug fixing about zero or '0'
+            bat.innerText += targetValue;
+            return;
+        }else if(!Number(targetValue)){ //for bug fixing about click on blank place
             return;
         }
 
-        if(targetValue == 'X..'){
+        if(targetValue == 'X..'){ //for 'X..' handaling because it is for Backpace
             return;
         }
-        if(bat.innerText == 0) {
+        if(bat.innerText == 0) { //for initial zero remove
             bat.innerText = '';
         }
+
+        
         bat.innerText += targetValue;
 
         if(Number(bat.innerText) >= 999){
